@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<table>
+
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Pseudo</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Rôle</th>
+            <th>Email</th>
+            <th>Date enregistrement</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        {% for user in users %}
+            <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.pseudo }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.roles[0] }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.dateEnregistrement | date('d/m/Y') }}</td>
+            <td>
+                <a href="{{ path('admin_user_update', {'id' : user.id }) }}">Modifier le compte</a>
+                <a href="{{ path('admin_user_delete', {'id' : user.id }) }}">Supprimer le compte</a>
+            </td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<a href="{{ path('admin_create_user') }}">Ajouter un compte</a>
+
+{% endblock %}

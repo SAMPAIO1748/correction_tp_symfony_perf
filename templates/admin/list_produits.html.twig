@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Couleur</th>
+            <th>Taille</th>
+            <th>Collection</th>
+            <th>Photo</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Date d'enregistrement</th>
+            <th>Action</th> 
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td style="background : {{ produit.couleur }}"></td>
+                <td>{{ produit.taille }}</td>
+                <td>{{ produit.collection }}</td>
+                <td><img src="{{ asset("medias/" ~ produit.photo) }}" alt="{{ produit.nom }}"></td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.stock }}</td>
+                <td>{{ produit.dateEnregistrement | date("d/m/Y")}}</td>
+                <td>
+                    <a href="{{ path("admin_show_produit", {'id' : produit.id}) }}">Voir le produit</a>
+                    <a href="{{ path("admin_update_produit", {'id' : produit.id}) }}">Modifier le produit</a>
+                    <a href="{{ path("admin_delete_produit", {'id' : produit.id}) }}">Supprimer le produit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path("admin_create_produit") }}">Ajouter un produit</a>
+
+{% endblock %}

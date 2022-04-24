@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{% for item in items %}
+    <h2>{{ item.produit.nom }}</h2>
+    <h2>{{ item.produit.prix }}</h2>
+    <h2>{{ item.quantite }}</h2>
+{% endfor %}
+
+<a href="{{path('create_command')}}">Confirmer la commande</a>
+
+{% endblock %}

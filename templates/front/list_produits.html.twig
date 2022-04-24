@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Photo</th>
+            <th>Panier</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('show_produit', {'id' : produit.id } ) }}">{{produit.nom}}</a></td>
+                <td>{{produit.description}}</td>
+                <td><img src="{{ asset("medias/" ~ produit.photo) }}" alt="{{produit.nom}}"></td>
+                <td><a href="{{ path('add_cart', {'id' : produit.id }) }}">Ajouter au panier</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

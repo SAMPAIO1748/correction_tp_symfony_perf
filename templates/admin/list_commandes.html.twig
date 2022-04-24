@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Date</th>
+                <th>Prix</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td><a href="{{ path('admin_show_commande', {'id' : commande.id }) }}">{{ commande.id }}</a></td>
+                    <td>{{ commande.user.email }}</td>
+                    <td>{{ commande.dateEnregistrement | date('d/m/Y') }}</td>
+                    <td>{{ commande.prix }}€</td>
+                    <td>
+                        <a href="{{ path('admin_update_commande', {'id' : commande.id }) }}">Modifier la commande</a>
+                        <a href="{{ path('admin_delete_commande', {'id' : commande.id }) }}">Supprimer la commande</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}

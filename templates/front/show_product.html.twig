@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Couleur</th>
+                <th>Taille</th>
+                <th>Collection</th>
+                <th>Photo</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Mettre au panier</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.couleur }}</td>
+                <td>{{ produit.taille }}</td>
+                <td>{{ produit.collection }}</td>
+                <td><img src="{{ asset("medias/" ~ produit.photo) }}" alt="{{ produit.nom }}"></td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.stock }}</td>
+               <td><a href="{{ path('add_cart', {'id' : produit.id }) }}">Ajouter au panier</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
