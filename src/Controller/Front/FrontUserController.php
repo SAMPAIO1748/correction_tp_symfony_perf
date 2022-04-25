@@ -69,7 +69,7 @@ class FrontUserController extends AbstractController
         if ($userForm->isSubmitted() && $userForm->isValid()) {
 
             $user->setDateEnregistrement(new \DateTime("NOW"));
-            $user->setRoles(["ROLE_USER"]);
+           
 
             $plainPassword = $userForm->get('password')->getData();
             $hashedpasword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);

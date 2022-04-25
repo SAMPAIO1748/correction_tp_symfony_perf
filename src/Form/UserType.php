@@ -17,7 +17,16 @@ class UserType extends AbstractType
             ->add('email')
             ->add('password', PasswordType::class, [
                 'mapped' => false 
-            ])
+                ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                'ROLE_ADMIN' => "ROLE_ADMIN",
+                'ROLE_USER' => "ROLE_USER",
+
+                ],
+                'multiple' => true,
+                'expanded' => false
+                ])
             ->add('pseudo')
             ->add('nom')
             ->add('prenom')

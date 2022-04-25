@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\UserAdminType;
+use App\Form\UserType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +42,7 @@ class AdminUserController extends AbstractController
 
         $user = $userRepository->find($id);
 
-        $userForm = $this->createForm(UserAdminType::class, $user);
+        $userForm = $this->createForm(UserType::class, $user);
 
         $userForm->handleRequest($request);
 
@@ -72,7 +72,7 @@ class AdminUserController extends AbstractController
 
         $user = new User();
 
-        $userForm = $this->createForm(UserAdminType::class, $user);
+        $userForm = $this->createForm(UserType::class, $user);
 
         $userForm->handleRequest($request);
 
